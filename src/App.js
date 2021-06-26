@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Accordion from "./component/Accordion";
 import Search from "./component/Search";
 import Dropdown from "./component/Dropdown";
+import Translate from "./component/Translate";
 
 const items = [
   {
@@ -35,20 +36,9 @@ const options = [
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
   return (
     <div>
-      <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle Dropdown
-      </button>
-      {showDropdown ? (
-        <Dropdown
-          options={options}
-          selected={selected}
-          onSelectedChange={setSelected}
-        />
-      ) : null}
+      <Translate />
     </div>
   );
 };
