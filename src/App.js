@@ -3,6 +3,7 @@ import Accordion from "./component/Accordion";
 import Search from "./component/Search";
 import Dropdown from "./component/Dropdown";
 import Translate from "./component/Translate";
+import Route from "./component/Route";
 
 const items = [
   {
@@ -36,9 +37,26 @@ const options = [
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default () => {
+  const [selected, setSelected] = useState(options[0]);
   return (
     <div>
-      <Translate />
+      <Route path='/'>
+        <Accordion items={items} />
+      </Route>
+      <Route path='/list'>
+        <Search />
+      </Route>
+      <Route path='/dropdown'>
+        <Dropdown
+          label='Select a Color'
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      </Route>
+      <Route path='/translate'>
+        <Translate />
+      </Route>
     </div>
   );
 };
